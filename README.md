@@ -1,3 +1,6 @@
+fork from [Unity-Helpers](https://github.com/mikecann/Unity-Helpers) by remove some of the stuffs I don't need like
+(Enumerate Resources, ViewStateController, FPSCounter, Misc Hacks)
+
 Unity-Helpers
 =============
 
@@ -54,71 +57,31 @@ using UnityHelerps;
 
 var player = UnityUtils.Load<Player>("Prefabs/Spaceship");
 ```
-
-Enumerate Resources
-===================
-
-![enumerate resources](http://i.imgur.com/OlkmYR6.png)
-
-Enumerate Resources is a handy util for creating type-safe resource references. Traditionally you have to manually create constant strings to load resources at runtime:
-
-```
-Resources.Load("Prefabs/Cars/Porsche");
-```
-
-This is fragile. If the asset is moved you wont know about the crash until you run the game, this line of code may not be executed often and hence introduces a bug that may only present itself at a later date.
-
-Enumerate Resources scans a resources directory and generates a type-safe alternative:
-
-```
-Resources.Load(GameResources.Prefabs.Cars.Porsche);
-```
-
-Now if you move the resource and run the enumerator you will get a compile error.
-
-For added sugar there is a method to add the loaded resource as a child of a game object (handy for prefabs):
-
-```
-obj.LoadChild(GameResources.Prefabs.Icons.IndicatorArror);
-```
-
-ViewStateController
-===================
-
-![view state controller screenshot](http://i.imgur.com/kjBzATD.png)
-
-The ViewStateController is a utility for UnityUI that allows you to manage view states. Simply add the states to a list then use the dropdown in the inspector to toggle between which one is active.
-
-At runtime use the methods to change the states:
-
-```
-var states = GetComponent<ViewStateController>();
-
-states.SetState("Main Menu"); // Sets the main menu state
-
-states.SetState(someOtherStateGameObject); // Sets another state using the gameobject reference
-```
-
-FPSCounter
-==========
-
-Attach this component to a gameobject with a Text component and output the current FPS to the screen.
-
-Misc Hacks
-==========
-
-The UnityHelpers.MiscHacks class contains a few helpful hacks, such as opening the SpriteEditorWindow directly from code (Unity provides no way of doing this).
-
 Tests
 =====
 
-I have included a number of Unit Tests with the project. If you would like to run the tests yourself then just make sure you include the "Unity Test Tools" project from the asset store.
+I'm using Unity build-in Unit Test with Unity 5.3.4f1. If you would like to run the tests yourself then go to _**Windows**_ → _**Editor Tests Runner**_ and run all the tests.
 
-Installation
-============
+Usage
+=====
 
-Simply include the source in your project, to use the extension methods dont forget to include the namespace:
+Simply include the source in your Assets folder in your project, to use the extension methods don't forget to include the namespace:
 
 ```
 using UnityHelpers;
 ```
+
+License
+=======
+
+Unity-Helpers [License](https://github.com/mikecann/Unity-Helpers/blob/master/LICENSE)
+
+The MIT License (MIT)
+
+Copyright © 2016 Thor Mengkheang, http://mengkheang.github.io/ \<thormengkheang@gmail.com\>
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
