@@ -2,19 +2,23 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityHelpers;
 
-namespace UnityHelpers.Tests
-{    
+namespace UnityHelpers.Test
+{
     [TestFixture]
-    public class UnityExtensionsTests : UnityUnitTest
+    public class UnityHelperTest
     {
         interface IMockComponent { }
         class MockComponent : MonoBehaviour, IMockComponent { }
+
         class AnotherMockComponent : MonoBehaviour, IMockComponent { }
+
+        private GameObject CreateGameObject()
+        {
+            return new GameObject();
+        }
 
         [Test]
         public void HasComponentFalseWhenNoComponentExists()
@@ -74,7 +78,7 @@ namespace UnityHelpers.Tests
             var obj = CreateGameObject();
             var comp = obj.AddComponent<MockComponent>();
             Assert.AreEqual(comp, obj.GetComponentOrInterface<IMockComponent>());
-        }   
+        }
 
         [Test]
         public void GetsNoComponentsWhenNoneExists()
@@ -229,6 +233,5 @@ namespace UnityHelpers.Tests
             evnt.Invoke(); // second invoke shouldnt call the handler
             Assert.AreEqual(1, callCount);
         }
-
-    }
+    } 
 }
